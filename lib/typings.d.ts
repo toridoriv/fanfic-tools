@@ -26,6 +26,29 @@ declare global {
     type ConfigInput = Schema.Input<(typeof http.HttpClient)["ConfigSchema"]>;
 
     /**
+     * Represents a function that creates a new instance of a `HttpClient`.
+     *
+     * @see {@link http.HttpClient.create}
+     */
+    type CreateFn = <C>(
+      this: C,
+      config?: ConfigInput,
+      interceptors?: InterceptorsInput,
+    ) => InstanceType<C>;
+
+    /**
+     * Represents a function that creates a new instance of a `HttpClient` based on the
+     * current defaults and interceptors.
+     *
+     * @see {@link http.HttpClient.prototype.fork}
+     */
+    type ForkFn = <C extends http.HttpClient>(
+      this: C,
+      config?: ConfigInput,
+      interceptors?: InterceptorsInput,
+    ) => InstanceType<C["super"]>;
+
+    /**
      * Represents a `HttpRequest`.
      *
      * @see {@link http.HttpRequest}
@@ -44,6 +67,11 @@ declare global {
      * request.
      */
     type HeadersInput = Headers | Record<string, string>;
+
+    /**
+     * Represents the HTTP interceptors configuration.
+     */
+    type Interceptors = Schema.Output<(typeof http.HttpClient)["InterceptorsSchema"]>;
 
     /**
      * Represents the input type for the HTTP interceptors configuration.
@@ -80,7 +108,7 @@ declare global {
      * Represents a function for sending HTTP requests.
      */
     export type SendFunction<OmitMethod = false> = <T>(
-      config: OmitMethod extends true ? Omit<ConfigInput, "method"> : ConfigInput,
+      config?: OmitMethod extends true ? Omit<ConfigInput, "method"> : ConfigInput,
       interceptors?: InterceptorsInput,
     ) => Promise<Response<T>>;
   }
