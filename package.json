@@ -1,0 +1,30 @@
+{
+  "name": "@toridoriv/fanfic-tools",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Tools for scraping fanfictions and related data.",
+  "author": {
+    "name": "Victoria Rodriguez",
+    "email": "vrodriguezfe@icloud.com",
+    "url": "https://github.com/toridoriv"
+  },
+  "license": "GPLv3",
+  "homepage": "https://github.com/toridoriv/fanfic-tools",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toridoriv/fanfic-tools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/toridoriv/fanfic-tools/issues",
+    "email": "vrodriguezfe@icloud.com"
+  },
+  "scripts": {},
+  "devDependencies": {
+    "@toridoriv/eslint-config": "github:toridoriv/eslint-config",
+    "dotenv": "^16.4.2",
+    "eslint": "^8.56.0"
+  },
+  "dependencies": {
+    "zod": "^3.22.4"
+  }
+}
