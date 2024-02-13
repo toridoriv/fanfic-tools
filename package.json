@@ -25,6 +25,8 @@
     "eslint": "^8.56.0"
   },
   "dependencies": {
+    "@toridoriv/cheerio": "^1.0.6",
+    "tslog": "^4.9.2",
     "zod": "^3.22.4"
   }
 }

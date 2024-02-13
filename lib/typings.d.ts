@@ -1,3 +1,4 @@
+import type * as cheerio from "@toridoriv/cheerio";
 import type * as http from "./http.js";
 import type { ZodType, ZodTypeAny, ZodTypeDef, input, output } from "zod";
 
@@ -149,5 +150,33 @@ declare global {
      * Gets the output type for the given schema.
      */
     type Output<S extends Any> = output<S>;
+  }
+
+  /**
+   * Types related to the Scraping module.
+   *
+   * @namespace Scraping
+   */
+  namespace Scraping {
+    /**
+     * A querying function, bound to a document created from the provided markup.
+     *
+     * Also provides several helper methods for dealing with the document as a whole.
+     */
+    type CheerioAPI = cheerio.CheerioAPI;
+
+    /**
+     * Represents the result of a web scraping operation.
+     */
+    interface Result {
+      /**
+       * A Cheerio instance loaded with the HTML source code.
+       */
+      $: cheerio.CheerioAPI;
+      /**
+       * The raw HTML that was retrieved.
+       */
+      source: string;
+    }
   }
 }
