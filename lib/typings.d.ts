@@ -9,6 +9,16 @@ declare global {
   type MaybePromise<T> = T | Promise<T>;
 
   /**
+   * Gets the keys of the given type T.
+   */
+  type KeyOf<T> = keyof T;
+
+  /**
+   * Gets the possible values of the properties of the given type T.
+   */
+  type ValueOf<T, K = KeyOf<T>> = T[K];
+
+  /**
    * Types related to making HTTP requests and configuring a HTTP client.
    *
    * @namespace Http
