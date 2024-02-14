@@ -1,4 +1,5 @@
 import type * as cheerio from "@toridoriv/cheerio";
+import type * as toolkit from "@toridoriv/toolkit";
 import type * as http from "./http.js";
 import type { ZodType, ZodTypeAny, ZodTypeDef, input, output } from "zod";
 
@@ -18,6 +19,18 @@ declare global {
    * Gets the possible values of the properties of the given type T.
    */
   type ValueOf<T, K = KeyOf<T>> = T[K];
+
+  /**
+   * Takes a type `T` and expands it into an object type with the same properties as `T`.
+   * {@link https://stackoverflow.com/a/69288824/62937 Credits to StackOverflow.}
+   */
+  type Expand<T> = toolkit.Expand<T>;
+
+  /**
+   * Represents a constructor function that can be invoked with `new` to instantiate
+   * objects of the constructed type.
+   */
+  type AnyConstructor = new (...args: any[]) => any;
 
   /**
    * Types related to making HTTP requests and configuring a HTTP client.
